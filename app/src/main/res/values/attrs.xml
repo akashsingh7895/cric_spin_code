@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="layoutImgBack" format="reference"></attr>
+    <attr name="layoutManager" format="string"></attr>
+    <attr name="bottomViewBackground" format="reference"></attr>
+    <attr name="balls" format="reference"></attr>
+    <attr name="laytBckMain" format="reference"></attr>
+    <attr name="visibilityMode"><enum name="ignore" value="1" /><enum name="normal" value="0" /></attr>
+    <attr name="vsBackground" format="reference"></attr>
+    <attr name="box_1" format="reference"></attr>
+    <attr name="box_2" format="reference"></attr>
+    <attr name="tabSelector" format="reference"></attr>
+    <attr name="logo" format="reference"></attr>
+    <attr name="colorLiveBox" format="reference"></attr>
+</resources>

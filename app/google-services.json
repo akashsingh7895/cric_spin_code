@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "531398546398",
+    "project_id": "cricspin-cricket-live",
+    "storage_bucket": "cricspin-cricket-live.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531398546398:android:fc8bdd0994a25f51d0034f",
+        "android_client_info": {
+          "package_name": "com.gsbusiness.fancylivecricketscore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531398546398-u1glnsv2c6s9bta4k5vdnblemtj87bij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gsbusiness.fancylivecricketscore",
+            "certificate_hash": "f0a91ce31c00a659336b73a924f1e60262e5df38"
+          }
+        },
+        {
+          "client_id": "531398546398-8pks5h99b95udcgm6vmod0482esnkbu5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDen3CzzYe4af0k6f9XRB13Y7pwNxcP2Ik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531398546398-8pks5h99b95udcgm6vmod0482esnkbu5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

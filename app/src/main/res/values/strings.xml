@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">CricSpin - Cricket Live Line</string>
+    <string name="no_internet">No Internet Connection !</string>
+    <string name="api_error">Api error !</string>
+    <string name="News">News</string>
+    <string name="inter_conn_weak">Weak Internet Connection</string>
+    <string name="share">share</string>
+    <string name="blu">Blue</string>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
+    <string name="black">Black</string>
+    <string name="live_line">Live Line</string>
+    <string name="live_match">Matches</string>
+    <string name="playing_xi">Score Card</string>
+    <string name="match_odds">Match Odds</string>
+    <string name="match_stats">Stats</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="results">Results</string>
+    <string name="join_telegram">Join Telegram</string>
+    <string name="sorry">Sorry!</string>
+
+    <string name="App_Id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="SplashActivity_Interstitial">ca-app-pub-3940252544/1033173712</string>
+    <string name="MainActivity_Interstitial">ca-app-pub-394025609/1033173712</string>
+    <string name="TeamImageActivity_Interstitial">ca-app-pub-39444/1033173712</string>
+    <string name="Banner">ca-app-pub-394025609994254478111</string>
+    <string name="Openads">ca-app-pub-39402560993419835294942544/</string>
+
+
+<!--    <string name="App_Id">ca-app-pub-3940256099942544~3347511713</string>-->
+<!--    <string name="SplashActivity_Interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="MainActivity_Interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="TeamImageActivity_Interstitial">ca-app-pub-3940256099942544/1033173712</string>-->
+<!--    <string name="Banner">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--    <string name="Openads">ca-app-pub-3940256099942544/3419835294</string>-->
+
+</resources>
