@@ -51,6 +51,9 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
         getWindow().setFlags(1024, 1024);
         setContentView(R.layout.activity_bottom);
 
+
+
+
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         firebaseFirestore.collection("tg")
