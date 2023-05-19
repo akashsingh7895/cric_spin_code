@@ -39,7 +39,7 @@
                     app:tabSelectedTextColor="@color/white"
                     app:tabTextColor="@color/black" />
 
-                <com.gsbusiness.fancylivecricketscore.CricketUtility.SwipePagerView
+                <com.avssolution.fancylivecricketscore.CricketUtility.SwipePagerView
                     android:id="@+id/pager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

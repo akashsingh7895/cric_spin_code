@@ -26,7 +26,7 @@
         android:theme="@style/Theme.FancyLiveCricketScore"
         tools:targetApi="31">
         <activity
-            android:name="com.gsbusiness.fancylivecricketscore.CricketActivity.SplashActivity"
+            android:name="com.avssolution.fancylivecricketscore.CricketActivity.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -40,25 +40,25 @@
 
 
         <activity
-            android:name="com.gsbusiness.fancylivecricketscore.CricketActivity.BottomActivity"
+            android:name="com.avssolution.fancylivecricketscore.CricketActivity.BottomActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
-            android:name="com.gsbusiness.fancylivecricketscore.CricketActivity.MainActivity"
+            android:name="com.avssolution.fancylivecricketscore.CricketActivity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_Fullscreen" />
 
         <activity
-            android:name="com.gsbusiness.fancylivecricketscore.CricketActivity.NewsDataActivity"
+            android:name="com.avssolution.fancylivecricketscore.CricketActivity.NewsDataActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
 
         </activity>
         <activity
-            android:name="com.gsbusiness.fancylivecricketscore.CricketActivity.NewsDataDetailsActivity"
+            android:name="com.avssolution.fancylivecricketscore.CricketActivity.NewsDataDetailsActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

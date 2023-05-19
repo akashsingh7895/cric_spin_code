@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/tvSorry"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ic_sad_emoji" />
+                android:background="@drawable/ic_sad_emojii" />
 
             <TextView
                 android:id="@+id/tvSorry"
