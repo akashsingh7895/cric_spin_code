@@ -134,10 +134,20 @@
                         android:id="@+id/recyclerUpcommingMatches"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                         android:visibility="gone"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:clipToPadding="false" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/series_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
 
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:clipToPadding="false" />
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

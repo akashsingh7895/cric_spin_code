@@ -53,4 +53,7 @@
     <color name="color_black">#ff1a1a1a</color>
     <color name="color_white">#ffffffff</color>
 
+    <color name="color_main">#693aa2</color>
+
+
 </resources>

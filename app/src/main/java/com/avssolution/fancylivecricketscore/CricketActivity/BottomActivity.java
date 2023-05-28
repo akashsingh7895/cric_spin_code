@@ -9,20 +9,26 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.avssolution.fancylivecricketscore.SideDrawer.AdapterNavItems;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.avssolution.fancylivecricketscore.CricketFragment.BottomFragment;
@@ -44,6 +50,9 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
 
     FirebaseFirestore firebaseFirestore;
     String tgUrl;
+
+    public static DrawerLayout dl;
+
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -67,6 +76,32 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
                             tgUrl = (String) snapshot.get("url");
                             Log.e("tgUrl", String.valueOf(tgUrl));
 
+                            FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
+                            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    if (tgUrl.equals("")){
+                                        Toast.makeText(BottomActivity.this, "Please Wait", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        try {
+                                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tgUrl));
+                                            PackageManager pm = getPackageManager();
+                                            if (intent.resolveActivity(pm) != null) {
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(getApplicationContext(), "Error message", Toast.LENGTH_LONG).show();
+                                            }
+                                        } catch (Exception ignored) {
+
+                                        }
+                                    }
+
+
+                                     }
+
+                            });
+
                         }else {
                             Toast.makeText(BottomActivity.this, "somethings went wrong"+task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -76,6 +111,33 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
 
         mInitResources();
         mGetSharedFooterValue();
+
+        dl=findViewById(R.id.dl);
+        RecyclerView recyclerViewNavItems=findViewById(R.id.recyclerView);
+        // ImageView imgDrawerController=findViewById(R.id.imgDrawerController);
+
+        dl.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                recyclerViewNavItems.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                recyclerViewNavItems.setAdapter(new AdapterNavItems(getApplicationContext()));
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
     }
 
     private void mGetSharedFooterValue() {
@@ -151,13 +213,14 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
                 str = "MultipleMatchFragment";
                 break;
             case R.id.navigation_news:
-                startActivity(new Intent(BottomActivity.this, NewsDataActivity.class));
+                //startActivity(new Intent(BottomActivity.this, NewsDataActivity.class));
+                dl.openDrawer(Gravity.LEFT);
 
                 str = "RegisterFragment";
                 break;
-            case R.id.navigation_odds:
-            case R.id.navigation_playing11:
-            case R.id.navigation_stats:
+               case R.id.navigation_odds:
+               case R.id.navigation_playing11:
+               case R.id.navigation_stats:
             default:
                 str = null;
                 break;
@@ -171,26 +234,26 @@ public class BottomActivity extends NetworkActivity implements BottomNavigationV
                 fragment = new UpcomingFragment();
                 str = "UpcomingMatchFragment";
                 break;
-            case R.id.navigation_join_telegram:
-                this.currentTabIndex = menuItem.getItemId();
+//            case R.id.navigation_join_telegram:
+//                this.currentTabIndex = menuItem.getItemId();
+////
+//                if (tgUrl.equals("")){
+//                    Toast.makeText(this, "Please Wait", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    try {
+//                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tgUrl));
+//                        PackageManager pm = getPackageManager();
+//                        if (intent.resolveActivity(pm) != null) {
+//                            startActivity(intent);
+//                        } else {
+//                            Toast.makeText(getApplicationContext(), "Error message", Toast.LENGTH_LONG).show();
+//                        }
+//                    } catch (Exception ignored) {
+//                    }
+//                }
 
-                if (tgUrl.equals("")){
-                    Toast.makeText(this, "Please Wait", Toast.LENGTH_SHORT).show();
-                }else {
-                    try {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tgUrl));
-                        PackageManager pm = getPackageManager();
-                        if (intent.resolveActivity(pm) != null) {
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error message", Toast.LENGTH_LONG).show();
-                        }
-                    } catch (Exception ignored) {
-                    }
-                }
-
-                str = "Join Telegram";
-                break;
+//                str = "Join Telegram";
+//                break;
         }
         return loadFragment(fragment, str);
     }

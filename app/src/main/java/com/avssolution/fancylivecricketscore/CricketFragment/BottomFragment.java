@@ -1,5 +1,7 @@
 package com.avssolution.fancylivecricketscore.CricketFragment;
 
+import static com.avssolution.fancylivecricketscore.LiveSeries.RetrofitIntance.*;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.avssolution.fancylivecricketscore.LiveSeries.RetrofitIntance;
+import com.avssolution.fancylivecricketscore.LiveSeries.SeriesAdapter;
+import com.avssolution.fancylivecricketscore.LiveSeries.SeriesModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -38,6 +44,7 @@ import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -57,13 +64,16 @@ public class BottomFragment extends MainCenterFragment implements DiscreteScroll
     ScheduledFuture<?> mScheduledFuture;
     ScheduledExecutorService mScheduler;
     DiscreteScrollView recycler;
-    RecyclerView recyclerResult;
+    RecyclerView recyclerResult, seriesRecyclerview;
     TeamResult resultMatchAdapter;
     ArrayList<ResultData.AllMatch> resultMatches;
     SwipeRefreshLayout swipeView;
     View view;
     ViewPager viewPager;
     ImageView image1, image2, image3, image4;
+
+    ///////////////////////
+    List<SeriesModel> allSeriesList;
 
 
     public void onCurrentItemChanged(MatchAll.ViewHolder viewHolder, int i) {
@@ -108,10 +118,9 @@ public class BottomFragment extends MainCenterFragment implements DiscreteScroll
         mCallApi();
         mProgressClose();
         getAllResultMatches(1, 10);
+        getSeriesData();
+
         return this.view;
-
-
-
 
 
     }
@@ -122,13 +131,15 @@ public class BottomFragment extends MainCenterFragment implements DiscreteScroll
         this.recycler = (DiscreteScrollView) this.view.findViewById(R.id.recyclerMatches);
         this.loaddaata = this.view.findViewById(R.id.loaddaata);
         this.recycler.setSlideOnFling(true);
+
         this.recycler.setItemTransformer(new ScaleTransformer.Builder().setMinScale(0.8f).setPivotX(Pivot.X.CENTER).setPivotY(Pivot.Y.CENTER).build());
         this.recycler.addOnItemChangedListener(this);
         MatchAll cricimultiplematchadapter = new MatchAll(getActivity(), this.dataMatches, this.teamURL);
         this.mAdapter = cricimultiplematchadapter;
         this.recycler.setAdapter(cricimultiplematchadapter);
 
-
+        this.seriesRecyclerview = this.view.findViewById(R.id.series_recycler_view);
+        seriesRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 
         this.recycler.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), this.recycler, new RecyclerTouchListener.ClickListener() {
 
@@ -203,6 +214,30 @@ public class BottomFragment extends MainCenterFragment implements DiscreteScroll
         swipeRefreshLayout.setRefreshing(false);
         this.swipeView.setEnabled(false);
         this.swipeView.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimaryDark, R.color.colorPrimary, R.color.colorAccent);
+    }
+
+    private void getSeriesData(){
+
+        getInstance().apiInterface.getSeries().enqueue(new Callback<List<SeriesModel>>() {
+            @Override
+            public void onResponse(Call<List<SeriesModel>> call, Response<List<SeriesModel>> response) {
+                allSeriesList = response.body();
+                seriesRecyclerview.setAdapter(new SeriesAdapter(getContext(),allSeriesList));
+                for (int i=0;i<allSeriesList.size();i++){
+                    Log.e("SeriesData","onSuccess: "+ allSeriesList.get(i).getSeriesid());
+
+                    // Toast.makeText(getContext(), "success" + allSeriesList.get(i).getSeriesname(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<SeriesModel>> call, Throwable t) {
+
+                Log.e("SeriesData","onFailure: "+ t.getLocalizedMessage());
+
+            }
+        });
     }
 
     private void mCallApi() {

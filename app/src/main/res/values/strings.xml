@@ -34,4 +34,18 @@
 <!--    <string name="Banner">ca-app-pub-3940256099942544/6300978111</string>-->
 <!--    <string name="Openads">ca-app-pub-3940256099942544/3419835294</string>-->
 
+
+
+    <string name="str_share_app_pre_text">"CricSpin is a predction app"</string>
+    <string name="str_share_with">Share with</string>
+    <string name="str_unable_to_send_try_again">Unable to send this try again</string>
+    <string name="supported_email">alien01plays@gmail.com</string>
+
+    <string-array name="arr_nav_items">
+        <item>Rate App</item>
+        <item>Share App</item>
+        <item>Contact us</item>
+    </string-array>
+
+
 </resources>

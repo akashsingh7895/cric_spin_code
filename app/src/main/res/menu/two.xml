@@ -13,8 +13,7 @@
 
     <item
         android:id="@+id/navigation_join_telegram"
-        android:icon="@drawable/telegram"
-        android:title="@string/join_telegram" />
+        android:title="" />
 
     <item
         android:id="@+id/navigation_result"
