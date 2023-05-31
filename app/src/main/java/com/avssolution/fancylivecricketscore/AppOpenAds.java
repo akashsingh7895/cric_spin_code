@@ -26,6 +26,10 @@ public class AppOpenAds implements LifecycleObserver,Application.ActivityLifecyc
     private static boolean isShowingAd = false;
 
 
+
+
+
+
     public  void AppOpenShow() {
         if (!isShowingAd && isAdAvailable()) {
             Log.d(LOG_TAG, "Will show ad.");
