@@ -39,6 +39,7 @@ public interface ApiCallInterface {
     @POST("LiveLine_Match")
     Call<ArrayList<LiveData>> getLiveLineDetail(@Body Map<String, String> map);
 
+
     @POST("MatchOdds")
     Call<OddData> getMatchOdds(@Body Map<String, String> map);
 
