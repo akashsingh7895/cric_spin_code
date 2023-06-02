@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,6 +64,7 @@ public class ResultsFragment extends MainCenterFragment {
                 Intent intent = new Intent(ResultsFragment.this.getActivity(), MainActivity.class);
                 intent.putExtra("MatchId", ResultsFragment.this.dataMatches.get(i).getMatchId() + "");
                 intent.putExtra("MatchType", "Result");
+                Toast.makeText(getContext(), ""+ResultsFragment.this.dataMatches.get(i).getMatchId(), Toast.LENGTH_SHORT).show();
                 intent.putExtra("MatchT", ResultsFragment.this.dataMatches.get(i).getMatchtype());
                 intent.putExtra("Match", ResultsFragment.this.dataMatches.get(i).getTitle() + "");
                 ResultsFragment.this.startActivity(intent);

@@ -1,5 +1,6 @@
 package com.avssolution.fancylivecricketscore.CricketFragment;
 
+import static android.content.ContentValues.TAG;
 import static com.avssolution.fancylivecricketscore.LiveSeries.RetrofitIntance.*;
 
 import android.content.Intent;
@@ -203,7 +204,9 @@ public class BottomFragment extends MainCenterFragment implements DiscreteScroll
             public void onClick(View view, int i) {
                 Intent intent = new Intent(BottomFragment.this.getActivity(), MainActivity.class);
                 intent.putExtra("MatchId", BottomFragment.this.resultMatches.get(i).getMatchId() + "");
+                Log.e("mTCHID",""+BottomFragment.this.resultMatches.get(i).getMatchId() + "");
                 intent.putExtra("MatchType", "Result");
+                Toast.makeText(getContext(), ""+BottomFragment.this.resultMatches.get(i).getMatchId() + "", Toast.LENGTH_SHORT).show();
                 intent.putExtra("MatchT", BottomFragment.this.resultMatches.get(i).getMatchtype());
                 intent.putExtra("Match", BottomFragment.this.resultMatches.get(i).getTitle() + "");
                 BottomFragment.this.startActivity(intent);

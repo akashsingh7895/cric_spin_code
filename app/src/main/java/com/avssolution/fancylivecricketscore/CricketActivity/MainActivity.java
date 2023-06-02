@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -135,6 +136,8 @@ public class MainActivity extends NetworkActivity implements BottomNavigationVie
         LoadDreamTeamAds();
 
         MatchId = getIntent().getStringExtra("MatchId");
+        Toast.makeText(this, ""+MatchId, Toast.LENGTH_SHORT).show();
+        Log.e("matchid",MatchId);
         MatchBetn = getIntent().getStringExtra("Match");
         MatchType = getIntent().getStringExtra("MatchType");
         MatchT = getIntent().getStringExtra("MatchT");
@@ -264,8 +267,6 @@ public class MainActivity extends NetworkActivity implements BottomNavigationVie
                                             HashMap hashMap = new HashMap();
                                             hashMap.put("MatchId", "" + MainActivity.MatchId);
                                             MainActivity.this.mGetRetroObject().getLiveLineDetail(hashMap).enqueue(new Callback<ArrayList<LiveData>>() {
-
-
                                                 @Override
                                                 public void onResponse(Call<ArrayList<LiveData>> call, Response<ArrayList<LiveData>> response) {
                                                     try {
